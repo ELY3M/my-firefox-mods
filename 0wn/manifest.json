@@ -1,0 +1,29 @@
+{
+  "applications": {
+    "gecko": {
+      "id": "elystheme1@mboca.com",
+      "strict_min_version": "60.0"
+    }
+  },
+  
+  
+    "name": "Elys 0wn Theme",
+    "manifest_version": 2,
+    "version": "1.0.1",
+	"theme": {
+    "images": {},
+    "properties": {},
+    "colors": {
+      "toolbar": "rgb(149, 156, 191)",
+      "bookmark_text": "rgb(0, 0, 0)",
+      "frame": "rgb(149, 156, 191)",
+      "tab_background_text": "rgb(0, 0, 0)",
+      "toolbar_field": "rgb(255, 255, 255)",
+      "toolbar_field_text": "rgb(0, 0, 0)",
+      "tab_line": "rgb(0, 255, 255)",
+      "popup": "rgb(149, 156, 191)",
+      "popup_text": "rgb(0, 0, 0)",
+      "tab_loading": "rgb(0, 255, 255)"
+    }
+  }
+}
