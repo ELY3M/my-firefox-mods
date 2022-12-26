@@ -1,66 +1,17 @@
+@import "elys_tabs.css";
+
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 
 
-/* TABS: on bottom */
-#navigator-toolbox toolbar:not(#nav-bar):not(#toolbar-menubar) {-moz-box-ordinal-group:10}
-#TabsToolbar {-moz-box-ordinal-group:1000!important}
 
-#TabsToolbar {
- position: absolute !important;
- bottom: 0 !important;
- width: 100vw !important;
-}
+/* OLD COLOR #959CBF */
 
-#tabbrowser-tabs {
-  width: 100vw !important;
-}
-#main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {padding-bottom: var(--tab-min-height) !important;}
+/* ACTIVE TAB BACKGROUND COLOR */
 
-/* TABS: height */
-:root {
- --tab-toolbar-navbar-overlap: 0px !important;
- --tab-min-height: 27px !important; /* adjust to suit your needs */
+.tab-content[selected="true"] {
+  background: #00FFFF !important;
 }
-:root #tabbrowser-tabs {
- --tab-min-height: 27px !important; /* needs to be the same as above under :root */
- --tab-min-width: 80px !important;
-}
-
-#TabsToolbar {
- height: var(--tab-min-height) !important;
- margin-bottom: 1px !important;
- box-shadow: ThreeDShadow 0 -1px inset, -moz-dialog 0 1px !important;
-}
-
-#tabbrowser-tabs,
-#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
-.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
-  min-height: var(--tab-min-height) !important;
-  max-height: var(--tab-min-height) !important;
-}
-
-/* drag space */
-.titlebar-spacer[type="pre-tabs"],
-.titlebar-spacer[type="post-tabs"] {
-  width: 40px;
-}
-
-/* Override vertical shifts when moving a tab */
-#navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
-  padding-bottom: unset !important;
-}
-#navigator-toolbox[movingtab] #tabbrowser-tabs {
-  padding-bottom: unset !important;
-  margin-bottom: unset !important;
-}
-#navigator-toolbox[movingtab] > #nav-bar {
-  margin-top: unset !important;
-}
-/* tabs on bottom end */
-
-
-
 
 tab[selected="true"] {
 background-color: #00FFFF !important;
@@ -78,13 +29,51 @@ color: black !important;
 .tab-line{
   display: none !important;
 }
+/* end */
 
 
+
+
+
+/* TABS: on bottom */
+
+
+/* end */
+
+
+
+
+
+/* tab separators */
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tab_separator_lines.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+/* Bring back tab separator lines that were removed in Proton */
+.tabbrowser-tab{
+  border-inline-end: 1px solid transparent !important;
+  border-image: 0 1 linear-gradient(
+    transparent 20%,
+    color-mix(in srgb, currentColor 20%, transparent) 20%,
+    color-mix(in srgb, currentColor 20%, transparent) 80%,
+    transparent 80%
+  ) !important;
+}
+
+.tabbrowser-tab:hover,
+.tabbrowser-tab[beforehovered],
+.tabbrowser-tab[selected],
+.tabbrowser-tab[last-visible-tab],
+.tabbrowser-tab[beforeselected-visible]{ border-image: none !important; }
+/* end */
+
+
+
+
+/* own custom menu colors */
 #brandLogo {
   -moz-appearance: none !important;	
   width: 0px !important;
   padding-left: 154px !important;
-  background: url("D:\Mozilla Firefox\profile\Profiles\default.zcl\chrome\about.png") !important;
+  background: url("about.png") !important;
 }
 
 
@@ -98,23 +87,80 @@ color: black !important; }
 background-color: #E3E3E3 !important;
 }
 
+
+/* get rid of the lines in menus */
+.menupopup-arrowscrollbox{
+  background-color: #959CBF !important;
+}
+#context-navigation .menu-iconic-icon {
+  background-color: transparent !important;
+}
+
+
+menupopup {
+    background-color: #959CBF !important;
+}
+menuitem > .menu-text, menuitem > .menu-iconic-text {
+    color: black !important;
+}
+menuitem, menu {
+    color: black !important;
+}
+
+
+
+
+menupopup > * {
+  padding-block: 0 !important;
+  padding-inline-start: 4px !important;
+    min-height: unset !important;
+    height: 1em !important;
+}
+
+menupopup > menuitem,
+menupopup > menu {
+  padding-block: 0 !important;
+  padding-inline-start: 4px !important;
+    min-height: unset !important;
+    height: 1em !important;
+}
+
+
+/*** Set custom colors for popup menu color variables ***/
+menupopup {
+  --menu-color: #959CBF  !important;
+  --menu-disabled-color: color-mix(in srgb, var(--menu-color) 50%, transparent) !important;
+  --menu-background-color: #959CBF  !important;
+  --menuitem-hover-background-color: #00FFFF !important;
+}
+
+
+
 menupopup {
 -moz-appearance: none !important;	
 background-color: #959CBF !important;
-background-image: none !important;	
 font-family: Fixedsys !important;
 font-size: 16pt !important;
 color: black !important;
+padding: 1px 0px 1px 0px !important;
 }
 
 menubar {
--moz-appearance: none !important;	
+-moz-appearance: none !important;
 background-color: #959CBF !important;
-background-image: none !important;	
 font-family: Fixedsys !important;
 font-size: 16pt !important;
 color: black !important;
+padding: 1px 0px 1px 0px !important;
 }
+
+menubar, menubutton, menulist, menu, menuitem, textbox, toolbar, tab, tree, tooltip {
+    padding-block: 0 !important;
+    padding-inline-start: 4px !important;
+	background-color: #959CBF !important;
+	padding: 1px 0px 1px 0px !important;	
+}
+	
 
 menulist:hover {
 -moz-appearance: none !important;
@@ -124,12 +170,13 @@ color: black !important;
 
 menuitem, menu {
 	-moz-appearance: none !important;
+	background-color: #959CBF !important;
 	padding: 1px 0px 1px 0px !important;
 }
 
 menuitem:hover, menu:hover, menu[open="true"], menuitem[_moz-menuactive="true"]	 {
 	-moz-appearance: none !important;
-	padding: 1px 0px 1px 0px !important;
+	padding: 1px 0px 1px 4px !important;
 	background-color: #00FFFF !important;
 }
 
@@ -143,9 +190,12 @@ menucaption {
 menuseparator{
    -moz-appearance: none !important;
    padding-top: 0px !important;
-   padding-bottom: 0px !important;
+   padding-bottom: 1px !important;
    margin-top: 1px !important;
    margin-bottom: 1px !important;
+   /*border-color: #959CBF !important;   
+   background: #959CBF !important;*/
+   background-color: #959CBF !important;
    -moz-border-top-colors: #959CBF !important;
    -moz-border-bottom-colors: #959CBF !important;
 }
@@ -157,17 +207,16 @@ menubutton,
 #menuToolbox {
 -moz-appearance: none !important;	
 background-color: #959CBF !important;
-background-image: none !important;	
 font-family: Fixedsys !important;
 font-size: 16pt !important;
 color: black !important;
 margin-top: 1px!important;
-margin-bottom: 1px!important
+margin-bottom: 1px!important;
+padding: 1px 0px 1px 0px !important;
 }
 
 statusbar {
 background-color: #959CBF !important;
-background-image: none !important;	
 font-family: Fixedsys !important;
 font-size: 12pt !important;
 color: black !important;
@@ -177,6 +226,7 @@ color: black !important;
 #statuspanel #statuspanel-label,
 statuspanel .statuspanel-label {
   -moz-appearance: none !important;
+  background-image: none !important;
   background-color: #959CBF !important;
   font-family: Fixedsys !important;
   font-size: 12pt !important;
@@ -216,6 +266,8 @@ treechildren.searchbar-treebody::-moz-tree-row(selected) {
 .progress-bar {
 -moz-appearance: none !important;
 background-color: #00FFFF !important; }
+/* end */
+
 
 
 
@@ -236,12 +288,6 @@ color: black !important;
 
 
 
-
-/*
-#bookmarksMenu {
-    display: none;
-}
-*/
 
 
 /* remove styling from buttons */

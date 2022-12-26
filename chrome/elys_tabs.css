@@ -1,0 +1,171 @@
+/* Firefox userChrome.css tweaks ********************************************************/
+/* Github: https://github.com/aris-t2/customcssforfx ************************************/
+/****************************************************************************************/
+
+/*
+@import "tab_bar_height.css"; 
+*/
+
+
+/* TAB BAR HEIGHT */
+/*
+#TabsToolbar { 
+height: 20px !important;
+}
+
+#tabbrowser-tab {
+max-height: 20px !important;
+}
+
+#titlebar {max-height: 20px !important}
+
+#titlebar-spacer {max-height: 20px !important}
+
+
+
+#tab-content {
+max-height: 20px !important;
+vertical-align: middle !important;
+}
+
+#tab-background {
+max-height: 20px !important;
+}
+
+:root {
+--tab-min-height: 20px !important;
+--tab-max-height: 20px !important;
+}
+
+#scrollbox {max-height: 20px !important;
+}
+*/
+/* end */
+
+
+/* new tab button */
+
+#tabbrowser-tabs #tabs-newtab-button {
+  visibility: none !important;	
+  display:-moz-box !important;
+}
+
+#tabs-newtab-button {
+	visibility: none !important;
+	max-height: 20px !important
+}
+
+#new-tab-button {
+  visibility: visible !important;
+  display: unset !important;
+}
+
+:is(.tabs-newtab-button,#tabs-newtab-button) {
+  visibility: collapse !important;
+}
+/* end */
+
+
+
+
+:root {
+  --tabs_toolbar_color_tabs_not_on_top: linear-gradient(#f9f9fa,#f9f9fa);
+  --tab-min-height_tnot: 20px;
+  --tab_below_navigation_toolbar_bottom_padding: calc( var(--tab-min-height_tnot) + 30px );
+}
+
+#TabsToolbar {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: 100vw;
+  background-clip: padding-box;
+  color: var(--toolbar-color);
+  z-index: 2;
+}
+
+
+#tabbrowser-tabs {
+  width: 90vw;
+}
+
+
+#TabsToolbar:not(:-moz-lwtheme){
+  appearance: none;
+  tabs_below_navigation_toolbar.csstabs_below_navigation_toolbar.css
+}
+
+#main-window:not([tabsintitlebar]) #TabsToolbar:not(:-moz-lwtheme){
+  appearance: none !important;
+}
+
+#navigator-toolbox {
+  position: relative;
+  padding-bottom: var(--tab_below_navigation_toolbar_bottom_padding);
+}
+
+#main-window[tabsintitlebar]:not([inDOMFullscreen="true"]) #titlebar,
+#main-window[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen="true"]) #titlebar {
+  height: 20px;
+}
+
+/* prevent possible item overlapping with caption buttons */
+#main-window[tabsintitlebar] #toolbar-menubar {
+  padding-inline-end: 140px;
+}
+
+/* move caption buttons to windows top right position */
+.titlebar-buttonbox-container {
+  position: fixed;
+  right: 0;
+  visibility: visible;
+  display: block;
+}
+
+#TabsToolbar .titlebar-buttonbox-container,
+#TabsToolbar .private-browsing-indicator,
+#TabsToolbar #window-controls,
+#TabsToolbar *[type="caption-buttons"],
+#TabsToolbar *[type="pre-tabs"],
+#TabsToolbar *[type="post-tabs"] {
+  display: visible;
+}
+
+/* lw themes support */
+#nav-bar {
+  box-shadow: unset !important;
+}
+
+/* remove color overlay for lw-themes */
+#main-window[style*='--lwt-header-image'] :is(#nav-bar,#PersonalToolbar,#TabsToolbar):-moz-lwtheme{
+  background: unset !important;
+}
+
+/* adjust background color */
+#main-window:not([style*='--lwt-header-image']) #TabsToolbar:-moz-lwtheme {
+  appearance: none !important;
+  /* background-image: linear-gradient(var(--toolbar-bgcolor),var(--toolbar-bgcolor)) !important; */
+  
+}
+
+/* Fixes for projects other settings */
+/* remove application/hamburger button in titlebar and tab toolbars start padding */
+#main-window[tabsintitlebar][sizemode="fullscreen"] #navigator-toolbox #PanelUI-button {
+  visibility: collapse;
+}
+
+/* override code inside appbutton in titlebar code */
+#main-window[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive="true"] ~ #TabsToolbar,
+#main-window[tabsintitlebar][sizemode="maximized"] #toolbar-menubar[autohide="true"][inactive="true"] ~ #TabsToolbar,
+#main-window[tabsintitlebar][sizemode="fullscreen"] #TabsToolbar,
+#main-window[uidensity=compact][tabsintitlebar] #toolbar-menubar[autohide="true"][inactive="true"] ~ #TabsToolbar,
+#main-window[uidensity=compact][tabsintitlebar][sizemode="maximized"] #toolbar-menubar[autohide="true"][inactive="true"] ~ #TabsToolbar,
+#main-window[tabsintitlebar]:is([sizemode="normal"],[sizemode="maximized"],[sizemode="fullscreen"]) #navigator-toolbox #TabsToolbar {
+  padding-inline-start: 0px !important;
+  margin-inline-start: 0px !important;
+}
+
+/* remove restored border between navigation toolbar and tabs toolbar */
+#nav-bar:not(:-moz-lwtheme) {
+  box-shadow: unset !important;
+}

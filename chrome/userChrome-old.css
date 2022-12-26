@@ -1,0 +1,259 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
+
+/* TABS: on bottom */
+#navigator-toolbox toolbar:not(#nav-bar):not(#toolbar-menubar) {-moz-box-ordinal-group:10}
+#TabsToolbar {-moz-box-ordinal-group:1000!important}
+
+#TabsToolbar {
+ position: absolute !important;
+ bottom: 0 !important;
+ width: 100vw !important;
+}
+
+#tabbrowser-tabs {
+  width: 100vw !important;
+}
+#main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {padding-bottom: var(--tab-min-height) !important;}
+
+/* TABS: height */
+:root {
+ --tab-toolbar-navbar-overlap: 0px !important;
+ --tab-min-height: 27px !important; /* adjust to suit your needs */
+}
+:root #tabbrowser-tabs {
+ --tab-min-height: 27px !important; /* needs to be the same as above under :root */
+ --tab-min-width: 80px !important;
+}
+
+#TabsToolbar {
+ height: var(--tab-min-height) !important;
+ margin-bottom: 1px !important;
+ box-shadow: ThreeDShadow 0 -1px inset, -moz-dialog 0 1px !important;
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
+
+/* drag space */
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"] {
+  width: 40px;
+}
+
+/* Override vertical shifts when moving a tab */
+#navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
+  padding-bottom: unset !important;
+}
+#navigator-toolbox[movingtab] #tabbrowser-tabs {
+  padding-bottom: unset !important;
+  margin-bottom: unset !important;
+}
+#navigator-toolbox[movingtab] > #nav-bar {
+  margin-top: unset !important;
+}
+/* tabs on bottom end */
+
+
+
+
+tab[selected="true"] {
+background-color: #00FFFF !important;
+background-image: none !important;
+font-weight: bold !important;
+color: black !important;
+}
+
+tab:not([selected="true"] ) {
+background-color: #959CBF !important;
+background-image: none !important;
+color: black !important;
+}
+
+.tab-line{
+  display: none !important;
+}
+
+
+#brandLogo {
+  -moz-appearance: none !important;	
+  width: 0px !important;
+  padding-left: 154px !important;
+  background: url("D:\Mozilla Firefox\profile\Profiles\default.zcl\chrome\about.png") !important;
+}
+
+
+#urlbar {
+-moz-appearance: none !important;
+background-color: #E3E3E3 !important;
+color: black !important; }
+
+#textbox {
+-moz-appearance: none !important;
+background-color: #E3E3E3 !important;
+}
+
+menupopup {
+-moz-appearance: none !important;	
+background-color: #959CBF !important;
+background-image: none !important;	
+font-family: Fixedsys !important;
+font-size: 16pt !important;
+color: black !important;
+}
+
+menubar {
+-moz-appearance: none !important;	
+background-color: #959CBF !important;
+background-image: none !important;	
+font-family: Fixedsys !important;
+font-size: 16pt !important;
+color: black !important;
+}
+
+menulist:hover {
+-moz-appearance: none !important;
+background-color: #00FFFF !important;
+color: black !important;
+}
+
+menuitem, menu {
+	-moz-appearance: none !important;
+	padding: 1px 0px 1px 0px !important;
+}
+
+menuitem:hover, menu:hover, menu[open="true"], menuitem[_moz-menuactive="true"]	 {
+	-moz-appearance: none !important;
+	padding: 1px 0px 1px 0px !important;
+	background-color: #00FFFF !important;
+}
+
+menucaption {
+    -moz-appearance: none !important;
+    background-color: #959CBF !important;
+	color: black !important;
+}
+
+
+menuseparator{
+   -moz-appearance: none !important;
+   padding-top: 0px !important;
+   padding-bottom: 0px !important;
+   margin-top: 1px !important;
+   margin-bottom: 1px !important;
+   -moz-border-top-colors: #959CBF !important;
+   -moz-border-bottom-colors: #959CBF !important;
+}
+   
+
+menuitem,
+menu,
+menubutton,
+#menuToolbox {
+-moz-appearance: none !important;	
+background-color: #959CBF !important;
+background-image: none !important;	
+font-family: Fixedsys !important;
+font-size: 16pt !important;
+color: black !important;
+margin-top: 1px!important;
+margin-bottom: 1px!important
+}
+
+statusbar {
+background-color: #959CBF !important;
+background-image: none !important;	
+font-family: Fixedsys !important;
+font-size: 12pt !important;
+color: black !important;
+}
+
+
+#statuspanel #statuspanel-label,
+statuspanel .statuspanel-label {
+  -moz-appearance: none !important;
+  background-color: #959CBF !important;
+  font-family: Fixedsys !important;
+  font-size: 12pt !important;
+  color: black !important;
+}
+
+
+
+#appmenu-button {	
+-moz-appearance: none !important;
+background-image: none !important;	
+background: #959CBF !important;
+border: 1px solid black !important;
+}
+
+#appmenu-button:hover:not(:active):not([open]) {	
+-moz-appearance: none !important;
+background-color: #00FFFF !important;
+}
+
+/* autocomplete */
+.autocomplete-richlistitem:hover,
+treechildren.searchbar-treebody::-moz-tree-row(hover) {
+  -moz-appearance: none !important;	
+  background-color: #00FFFF !important;
+}
+
+.autocomplete-richlistitem[selected],
+treechildren.searchbar-treebody::-moz-tree-row(selected) {
+  -moz-appearance: none !important;	
+  background-color: #00FFFF !important;
+}
+/* autocomplete end */
+
+
+/* Change the progress bar color */
+.progress-bar {
+-moz-appearance: none !important;
+background-color: #00FFFF !important; }
+
+
+
+* {
+background-image: none !important;	
+font-family: fixedsys !important;
+font-size: 12pt !important;
+color: black !important;
+}
+
+
+{
+background-image: none !important;
+font-family: fixedsys !important;
+font-size: 12pt !important;
+color: black !important;
+}
+
+
+
+
+/*
+#bookmarksMenu {
+    display: none;
+}
+*/
+
+
+/* remove styling from buttons */
+.toolbarbutton-1 > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-badge-container,
+.toolbarbutton-1 > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
